@@ -1,0 +1,506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DD41B711-8635-419E-9E5C-272F7E62BD91}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ProyectoMetodos</RootNamespace>
+    <AssemblyName>ProyectoMetodos</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Derivadas.cs" />
+    <Compile Include="EcuaDif.cs" />
+    <Compile Include="Eliminacion_Gaussiana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Eliminacion_Gaussiana.Designer.cs">
+      <DependentUpon>Eliminacion_Gaussiana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLagrange.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLagrange.Designer.cs">
+      <DependentUpon>FormLagrange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario_Taylor_4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario_Taylor_4.Designer.cs">
+      <DependentUpon>Formulario_Taylor_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formula_Taylor_0.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formula_Taylor_0.Designer.cs">
+      <DependentUpon>Formula_Taylor_0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formula_Taylor_1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formula_Taylor_1.Designer.cs">
+      <DependentUpon>Formula_Taylor_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formula_Taylor_2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formula_Taylor_2.Designer.cs">
+      <DependentUpon>Formula_Taylor_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formula_Taylor_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formula_Taylor_3.Designer.cs">
+      <DependentUpon>Formula_Taylor_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formula_Taylor_5.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formula_Taylor_5.Designer.cs">
+      <DependentUpon>Formula_Taylor_5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAdams.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAdams.Designer.cs">
+      <DependentUpon>FrmAdams.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDerivacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDerivacion.Designer.cs">
+      <DependentUpon>FrmDerivacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDifDivididas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDifDivididas.Designer.cs">
+      <DependentUpon>FrmDifDivididas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmFactorizacionLU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmFactorizacionLU.Designer.cs">
+      <DependentUpon>FrmFactorizacionLU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmIntegracionMultiple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmIntegracionMultiple.Designer.cs">
+      <DependentUpon>FrmIntegracionMultiple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmInterpolacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmInterpolacion.Designer.cs">
+      <DependentUpon>FrmInterpolacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmNeville.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmNeville.Designer.cs">
+      <DependentUpon>FrmNeville.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPLU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPLU.Designer.cs">
+      <DependentUpon>FrmPLU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRichardson.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRichardson.Designer.cs">
+      <DependentUpon>FrmRichardson.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRKFehlberg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRKFehlberg.Designer.cs">
+      <DependentUpon>FrmRKFehlberg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integracion.cs" />
+    <Compile Include="Integracion_Abierta_Trapecio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integracion_Abierta_Trapecio.Designer.cs">
+      <DependentUpon>Integracion_Abierta_Trapecio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integracion_Cuadratura_Adaptativa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integracion_Cuadratura_Adaptativa.Designer.cs">
+      <DependentUpon>Integracion_Cuadratura_Adaptativa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integracion_Cuadratura_Gaussiana.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integracion_Cuadratura_Gaussiana.Designer.cs">
+      <DependentUpon>Integracion_Cuadratura_Gaussiana.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integracion_Simpson_1_3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integracion_Simpson_1_3.Designer.cs">
+      <DependentUpon>Integracion_Simpson_1_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integracion_Simpson_3_8.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integracion_Simpson_3_8.Designer.cs">
+      <DependentUpon>Integracion_Simpson_3_8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Integracion_Trapecio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Integracion_Trapecio.Designer.cs">
+      <DependentUpon>Integracion_Trapecio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Interpolacion.cs" />
+    <Compile Include="LU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LU.Designer.cs">
+      <DependentUpon>LU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Matrices.cs" />
+    <Compile Include="Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Menu.Designer.cs">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Aitken_Biseccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Aitken_Biseccion.Designer.cs">
+      <DependentUpon>Metodo_Aitken_Biseccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Aitken_Secante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Aitken_Secante.Designer.cs">
+      <DependentUpon>Metodo_Aitken_Secante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Biseccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Biseccion.Designer.cs">
+      <DependentUpon>Metodo_Biseccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_euler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_euler.Designer.cs">
+      <DependentUpon>Metodo_euler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Falsa_Posicion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Falsa_Posicion.Designer.cs">
+      <DependentUpon>Metodo_Falsa_Posicion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Horner.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Horner.Designer.cs">
+      <DependentUpon>Metodo_Horner.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Muller.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Muller.Designer.cs">
+      <DependentUpon>Metodo_Muller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Newton.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Newton.Designer.cs">
+      <DependentUpon>Metodo_Newton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Punto_Fijo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Punto_Fijo.Designer.cs">
+      <DependentUpon>Metodo_Punto_Fijo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_RungeKuta2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_RungeKuta2.Designer.cs">
+      <DependentUpon>Metodo_RungeKuta2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Runge_Kuta4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Runge_Kuta4.Designer.cs">
+      <DependentUpon>Metodo_Runge_Kuta4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Secante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Secante.Designer.cs">
+      <DependentUpon>Metodo_Secante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Metodo_Steffensen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Metodo_Steffensen.Designer.cs">
+      <DependentUpon>Metodo_Steffensen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MetSolEc.cs" />
+    <Compile Include="Met_Pivoteo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Met_Pivoteo.Designer.cs">
+      <DependentUpon>Met_Pivoteo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pivoteo.cs" />
+    <Compile Include="Pivoteo_Parcial_Escalado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pivoteo_Parcial_Escalado.Designer.cs">
+      <DependentUpon>Pivoteo_Parcial_Escalado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pivote_Maximo_Columna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pivote_Maximo_Columna.Designer.cs">
+      <DependentUpon>Pivote_Maximo_Columna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RK34.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RK34.Designer.cs">
+      <DependentUpon>RK34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Rugen_Kutta_4_SEDOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rugen_Kutta_4_SEDOS.Designer.cs">
+      <DependentUpon>Rugen_Kutta_4_SEDOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SEDOS_Rugen_Kutta.cs" />
+    <Compile Include="Simpson_Compuesta_Multiple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Simpson_Compuesta_Multiple.Designer.cs">
+      <DependentUpon>Simpson_Compuesta_Multiple.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SistemasEDO.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SistemasEDO.Designer.cs">
+      <DependentUpon>SistemasEDO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Sist_Ec_Lineales.cs" />
+    <Compile Include="Taylor.cs" />
+    <Compile Include="Trapecio_Compuesta_Multiple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Trapecio_Compuesta_Multiple.Designer.cs">
+      <DependentUpon>Trapecio_Compuesta_Multiple.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Eliminacion_Gaussiana.resx">
+      <DependentUpon>Eliminacion_Gaussiana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLagrange.resx">
+      <DependentUpon>FormLagrange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario_Taylor_4.resx">
+      <DependentUpon>Formulario_Taylor_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formula_Taylor_0.resx">
+      <DependentUpon>Formula_Taylor_0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formula_Taylor_1.resx">
+      <DependentUpon>Formula_Taylor_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formula_Taylor_2.resx">
+      <DependentUpon>Formula_Taylor_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formula_Taylor_3.resx">
+      <DependentUpon>Formula_Taylor_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formula_Taylor_5.resx">
+      <DependentUpon>Formula_Taylor_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAdams.resx">
+      <DependentUpon>FrmAdams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDerivacion.resx">
+      <DependentUpon>FrmDerivacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDifDivididas.resx">
+      <DependentUpon>FrmDifDivididas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmFactorizacionLU.resx">
+      <DependentUpon>FrmFactorizacionLU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmIntegracionMultiple.resx">
+      <DependentUpon>FrmIntegracionMultiple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmInterpolacion.resx">
+      <DependentUpon>FrmInterpolacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmNeville.resx">
+      <DependentUpon>FrmNeville.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPLU.resx">
+      <DependentUpon>FrmPLU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRichardson.resx">
+      <DependentUpon>FrmRichardson.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRKFehlberg.resx">
+      <DependentUpon>FrmRKFehlberg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integracion_Abierta_Trapecio.resx">
+      <DependentUpon>Integracion_Abierta_Trapecio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integracion_Cuadratura_Adaptativa.resx">
+      <DependentUpon>Integracion_Cuadratura_Adaptativa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integracion_Cuadratura_Gaussiana.resx">
+      <DependentUpon>Integracion_Cuadratura_Gaussiana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integracion_Simpson_1_3.resx">
+      <DependentUpon>Integracion_Simpson_1_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integracion_Simpson_3_8.resx">
+      <DependentUpon>Integracion_Simpson_3_8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Integracion_Trapecio.resx">
+      <DependentUpon>Integracion_Trapecio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LU.resx">
+      <DependentUpon>LU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Menu.resx">
+      <DependentUpon>Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Aitken_Biseccion.resx">
+      <DependentUpon>Metodo_Aitken_Biseccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Aitken_Secante.resx">
+      <DependentUpon>Metodo_Aitken_Secante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Biseccion.resx">
+      <DependentUpon>Metodo_Biseccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_euler.resx">
+      <DependentUpon>Metodo_euler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Falsa_Posicion.resx">
+      <DependentUpon>Metodo_Falsa_Posicion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Horner.resx">
+      <DependentUpon>Metodo_Horner.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Muller.resx">
+      <DependentUpon>Metodo_Muller.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Newton.resx">
+      <DependentUpon>Metodo_Newton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Punto_Fijo.resx">
+      <DependentUpon>Metodo_Punto_Fijo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Runge_Kuta4.resx">
+      <DependentUpon>Metodo_Runge_Kuta4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Secante.resx">
+      <DependentUpon>Metodo_Secante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Metodo_Steffensen.resx">
+      <DependentUpon>Metodo_Steffensen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Met_Pivoteo.resx">
+      <DependentUpon>Met_Pivoteo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pivoteo_Parcial_Escalado.resx">
+      <DependentUpon>Pivoteo_Parcial_Escalado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pivote_Maximo_Columna.resx">
+      <DependentUpon>Pivote_Maximo_Columna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="RK34.resx">
+      <DependentUpon>RK34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Rugen_Kutta_4_SEDOS.resx">
+      <DependentUpon>Rugen_Kutta_4_SEDOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Simpson_Compuesta_Multiple.resx">
+      <DependentUpon>Simpson_Compuesta_Multiple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SistemasEDO.resx">
+      <DependentUpon>SistemasEDO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Trapecio_Compuesta_Multiple.resx">
+      <DependentUpon>Trapecio_Compuesta_Multiple.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
