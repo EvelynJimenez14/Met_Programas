@@ -26,8 +26,7 @@ namespace ProyectoMetodos
             m1.DropDownItems.Add("Newton-Raphson", null, (s, e) => new Metodo_Newton().Show());
             m1.DropDownItems.Add("Secante", null, (s, e) => new Metodo_Secante().Show());
             m1.DropDownItems.Add("Müller", null, (s, e) => new Metodo_Muller().Show());
-            m1.DropDownItems.Add("Horner", null, (s, e) => new Metodo_Horner().Show());
-
+           
             //SEGUNDO PARCIAL 
             ToolStripMenuItem m2 = new ToolStripMenuItem("Segundo Parcial");
             m2.BackColor = Color.LightGreen;
@@ -67,7 +66,7 @@ namespace ProyectoMetodos
             subSistemas.DropDownItems.Add("Eliminación Gaussiana", null, (s, e) => new Eliminacion_Gaussiana().Show());
             subSistemas.DropDownItems.Add("Estrategias de Pivoteo (P/E/T)", null, (s, e) => new Met_Pivoteo().Show());
             subSistemas.DropDownItems.Add("PLU", null, (s, e) => new FrmPLU().Show());
-            subSistemas.DropDownItems.Add("LU",null,(s,e) => new FrmLU().Show());
+            subSistemas.DropDownItems.Add("LU",null,(s,e) => new FrmFactorizacionLU().Show());
             subSistemas.DropDownItems.Add("Factorización LU (Ax=B)", null, (s, e) => new FrmFactorizacionLU().Show());
             // Ecuaciones Diferenciales
             var subEDO = new ToolStripMenuItem("Ecuaciones Diferenciales");

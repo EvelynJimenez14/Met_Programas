@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProyectoMetodos
@@ -10,49 +11,24 @@ namespace ProyectoMetodos
             InitializeComponent();
         }
 
-        // Aquí pongo la función que quiero integrar
-        private double f(double x) => Math.Exp(x * x); // Ejemplo: e^(x^2)
-
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
-            try
+            
+            if (double.TryParse(A_txt.Text, out double a) &&
+                double.TryParse(B_txt.Text, out double b))
             {
-                // Jalo los límites y la tolerancia de las cajas
-                double a = double.Parse(A_txt.Text);
-                double b = double.Parse(B_txt.Text);
-                double tol = 0.00001; // Tolerancia por defecto
+                double tol = 0.00001; 
 
-                // Llamo a la función recursiva de Simpson Adaptativo
-                double resultado = SimpsonAdaptativo(a, b, tol, SimpsonRegla(a, b));
+                Integracion motor = new Integracion();
+                double resultado = motor.MetodoCuadraturaAdaptativa(a, b, tol, 0);
 
-                Resultado_txt.Text = resultado.ToString("N8");
+                Resultado_txt.Text = resultado.ToString("N10");
             }
-            catch { MessageBox.Show("Revisa los números, algo no cuadra."); }
-        }
-
-        // Función auxiliar: Regla de Simpson básica para un intervalo
-        private double SimpsonRegla(double a, double b)
-        {
-            double c = (a + b) / 2.0;
-            return (Math.Abs(b - a) / 6.0) * (f(a) + 4.0 * f(c) + f(b));
-        }
-
-        // Algoritmo de Simpson Adaptativo (Recursivo)
-        private double SimpsonAdaptativo(double a, double b, double tol, double S)
-        {
-            double c = (a + b) / 2.0;
-            double S_izq = SimpsonRegla(a, c);
-            double S_der = SimpsonRegla(c, b);
-
-            // Si la diferencia es pequeña, ya terminamos ese pedazo
-            if (Math.Abs(S_izq + S_der - S) <= 15.0 * tol)
+            else
             {
-                return S_izq + S_der + (S_izq + S_der - S) / 15.0;
+                MessageBox.Show("Por favor, ingrese valores numéricos válidos en los límites.",
+                                "Error de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            // Si no, seguimos dividiendo a la mitad
-            return SimpsonAdaptativo(a, c, tol / 2.0, S_izq) +
-                   SimpsonAdaptativo(c, b, tol / 2.0, S_der);
         }
     }
 }

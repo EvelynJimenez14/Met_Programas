@@ -15,13 +15,20 @@ namespace ProyectoMetodos
         {
             if (int.TryParse(txtN.Text, out int n) && n > 1)
             {
-                dgvA.ColumnCount = n; dgvA.RowCount = n;
-                dgvB.ColumnCount = 1; dgvB.RowCount = n;
-                dgvL.ColumnCount = n; dgvL.RowCount = n;
-                dgvU.ColumnCount = n; dgvU.RowCount = n;
-                dgvA.AllowUserToAddRows = false;
-                dgvB.AllowUserToAddRows = false;
+                ConfigurarGrid(dgvA, n, n, "A");
+                ConfigurarGrid(dgvB, n, 1, "B");
+                ConfigurarGrid(dgvL, n, n, "L");
+                ConfigurarGrid(dgvU, n, n, "U");
             }
+        }
+
+        private void ConfigurarGrid(DataGridView dgv, int filas, int columnas, string nombre)
+        {
+            dgv.AllowUserToAddRows = false;
+            dgv.ColumnCount = columnas;
+            dgv.RowCount = filas;
+            for (int j = 0; j < columnas; j++) dgv.Columns[j].Width = 50;
+            dgv.TopLeftHeaderCell.Value = nombre;
         }
 
         private void btnResolver_Click(object sender, EventArgs e)
@@ -36,8 +43,14 @@ namespace ProyectoMetodos
 
                 for (int i = 0; i < n; i++)
                 {
-                    for (int j = 0; j < n; j++) A[i, j] = Convert.ToDouble(dgvA.Rows[i].Cells[j].Value);
-                    B[i] = Convert.ToDouble(dgvB.Rows[i].Cells[0].Value);
+                    if (!double.TryParse(dgvB.Rows[i].Cells[0].Value?.ToString(), out B[i]))
+                        throw new Exception($"Error en B[{i}]");
+
+                    for (int j = 0; j < n; j++)
+                    {
+                        if (!double.TryParse(dgvA.Rows[i].Cells[j].Value?.ToString(), out A[i, j]))
+                            throw new Exception($"Error en A[{i},{j}]");
+                    }
                 }
 
                 Matrices.FactorizarLU(A, L, U, n);
@@ -53,7 +66,10 @@ namespace ProyectoMetodos
                 }
                 lblResultado.Text = "X = [" + string.Join(" | ", X) + "]";
             }
-            catch { MessageBox.Show("Error en los datos."); }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Crítico: " + ex.Message);
+            }
         }
     }
 }

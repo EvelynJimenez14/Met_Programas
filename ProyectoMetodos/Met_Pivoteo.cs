@@ -37,7 +37,7 @@ namespace ProyectoMetodos
 
                 dgvResultado.Rows.Clear();
                 dgvResultado.ColumnCount = 0;
-                lblOrden.Text = "Orden: ---";
+                
             }
             else
             {

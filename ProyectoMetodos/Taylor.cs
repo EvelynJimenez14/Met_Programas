@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Numerics;
 
-
 namespace ProyectoMetodos
 {
     internal class Taylor
     {
-
-        public float FormulaTaylor(float x, float x0, float b, float incremento, DataGridView dgvResultado)
+        
+        public double FormulaTaylor(double x, double x0, double b, double incremento, DataGridView dgvResultado)
         {
-            float T;
-            float real; 
+            double T;
+            double real;
             int i = 1;
 
             dgvResultado.Rows.Clear();
@@ -33,15 +32,14 @@ namespace ProyectoMetodos
 
             while (x0 <= b)
             {
-                real = FuncPrin(x);     // Valor real
-                T = FuncPrin(x0); // Aprox
+                real = FuncPrin(x);
+                T = FuncPrin(x0);
 
                 int newRowIdx = dgvResultado.Rows.Add();
                 dgvResultado.Rows[newRowIdx].Cells[0].Value = i;
                 dgvResultado.Rows[newRowIdx].Cells[1].Value = x;
                 dgvResultado.Rows[newRowIdx].Cells[2].Value = real;
                 dgvResultado.Rows[newRowIdx].Cells[3].Value = T;
-
 
                 x0 += incremento;
                 x += incremento;
@@ -52,12 +50,12 @@ namespace ProyectoMetodos
             return 0;
         }
 
-        public float FormulaTaylor1(float x, float x0, float b, float incremento, DataGridView dgvResultado)
+        public double FormulaTaylor1(double x, double x0, double b, double incremento, DataGridView dgvResultado)
         {
-            float T; // aproximacion con Taylor
-            float real; // Sol real
+            double T;
+            double real;
             int i = 1;
-            float h;
+            double h;
 
             dgvResultado.Rows.Clear();
             dgvResultado.Columns.Clear();
@@ -75,16 +73,14 @@ namespace ProyectoMetodos
             while (x0 <= b)
             {
                 h = x - x0;
-                real = FuncPrin(x);  
-                T = FuncPrin(x0) // Término constante
-                       + (FuncDer_1(x0) * h); //primer orden
+                real = FuncPrin(x);
+                T = FuncPrin(x0) + (FuncDer_1(x0) * h);
 
                 int newRowIdx = dgvResultado.Rows.Add();
-                dgvResultado.Rows[newRowIdx].Cells[0].Value = i; // Iteración
-                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4); // Valor de x0
-                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6); // Aprox
-                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6); //real
-
+                dgvResultado.Rows[newRowIdx].Cells[0].Value = i;
+                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4);
+                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6);
+                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6);
 
                 x0 += incremento;
                 x += incremento;
@@ -95,12 +91,12 @@ namespace ProyectoMetodos
             return 0;
         }
 
-        public float FormulaTaylor2(float x, float x0, float b, float incremento, DataGridView dgvResultado)
+        public double FormulaTaylor2(double x, double x0, double b, double incremento, DataGridView dgvResultado)
         {
-            float T; 
-            float real;
+            double T;
+            double real;
             int i = 1;
-            float h;
+            double h;
 
             dgvResultado.Rows.Clear();
             dgvResultado.Columns.Clear();
@@ -117,20 +113,18 @@ namespace ProyectoMetodos
 
             while (x0 <= b)
             {
-                h = x - x0; // Recalcular h en cada iteración
-
+                h = x - x0;
                 real = FuncPrin(x);
 
-                // Aproximación con Taylor de segundo orden
-                T = FuncPrin(x0) // Término constante
-                       + (FuncDer_1(x0) * h) // primer orden
-                       + ((FuncDer_2(x0) / 2) * (float)Math.Pow(h, 2.0)); //segundo orden
+                T = FuncPrin(x0)
+                       + (FuncDer_1(x0) * h)
+                       + ((FuncDer_2(x0) / 2.0) * Math.Pow(h, 2.0));
 
                 int newRowIdx = dgvResultado.Rows.Add();
-                dgvResultado.Rows[newRowIdx].Cells[0].Value = i; // Iteración
-                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4); // Valor de x0
-                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6); // Aprox
-                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6); //real
+                dgvResultado.Rows[newRowIdx].Cells[0].Value = i;
+                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4);
+                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6);
+                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6);
 
                 x0 += incremento;
                 x += incremento;
@@ -141,12 +135,12 @@ namespace ProyectoMetodos
             return 0;
         }
 
-        public float FormulaTaylor3(float x, float x0, float b, float incremento, DataGridView dgvResultado)
+        public double FormulaTaylor3(double x, double x0, double b, double incremento, DataGridView dgvResultado)
         {
-            float T;
-            float real;
+            double T;
+            double real;
             int i = 1;
-            float h;
+            double h;
 
             dgvResultado.Rows.Clear();
             dgvResultado.Columns.Clear();
@@ -163,21 +157,19 @@ namespace ProyectoMetodos
 
             while (x0 <= b)
             {
-                h = x - x0; // Recalcular h en cada iteración
-
+                h = x - x0;
                 real = FuncPrin(x);
 
-                // Aproximación con Taylor de segundo orden
-                T = FuncPrin(x0) // Término constante
-                       + (FuncDer_1(x0) * h) // primer orden
-                       + ((FuncDer_2(x0) / 2) * (float)Math.Pow(h, 2.0)) //segundo orden
-                       + ((FuncDer_3(x0) / 6) * (float)Math.Pow(h, 3.0)); //tercer orden
+                T = FuncPrin(x0)
+                       + (FuncDer_1(x0) * h)
+                       + ((FuncDer_2(x0) / 2.0) * Math.Pow(h, 2.0))
+                       + ((FuncDer_3(x0) / 6.0) * Math.Pow(h, 3.0));
 
                 int newRowIdx = dgvResultado.Rows.Add();
-                dgvResultado.Rows[newRowIdx].Cells[0].Value = i; // Iteración
-                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4); // Valor de x0
-                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6); // Aprox
-                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6); //real
+                dgvResultado.Rows[newRowIdx].Cells[0].Value = i;
+                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4);
+                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6);
+                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6);
 
                 x0 += incremento;
                 x += incremento;
@@ -188,12 +180,12 @@ namespace ProyectoMetodos
             return 0;
         }
 
-        public float FormulaTaylor4(float x, float x0, float b, float incremento, DataGridView dgvResultado)
+        public double FormulaTaylor4(double x, double x0, double b, double incremento, DataGridView dgvResultado)
         {
-            float T;
-            float real;
+            double T;
+            double real;
             int i = 1;
-            float h;
+            double h;
 
             dgvResultado.Rows.Clear();
             dgvResultado.Columns.Clear();
@@ -210,22 +202,20 @@ namespace ProyectoMetodos
 
             while (x0 <= b)
             {
-                h = x - x0; // Recalcular h en cada iteración
-
+                h = x - x0;
                 real = FuncPrin(x);
 
-                // Aproximación con Taylor de segundo orden
-                T = FuncPrin(x0) // Término constante
-                       + (FuncDer_1(x0) * h) // primer orden
-                       + ((FuncDer_2(x0) / 2) * (float)Math.Pow(h, 2.0)) //segundo orden
-                       + ((FuncDer_3(x0) / 6) * (float)Math.Pow(h, 3.0)) //tercer orden
-                       + ((FuncPrin(x0) / 24) *(float)Math.Pow(h, 4.0)); //cuarto orden
+                T = FuncPrin(x0)
+                       + (FuncDer_1(x0) * h)
+                       + ((FuncDer_2(x0) / 2.0) * Math.Pow(h, 2.0))
+                       + ((FuncDer_3(x0) / 6.0) * Math.Pow(h, 3.0))
+                       + ((FuncPrin(x0) / 24.0) * Math.Pow(h, 4.0));
 
                 int newRowIdx = dgvResultado.Rows.Add();
-                dgvResultado.Rows[newRowIdx].Cells[0].Value = i; // Iteración
-                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4); // Valor de x0
-                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6); // Aprox
-                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6); //real
+                dgvResultado.Rows[newRowIdx].Cells[0].Value = i;
+                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4);
+                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6);
+                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6);
 
                 x0 += incremento;
                 x += incremento;
@@ -236,18 +226,19 @@ namespace ProyectoMetodos
             return 0;
         }
 
-        public float FormulaTaylor5(float x, float x0, float b, float incremento, DataGridView dgvResultado)
+        // Se renombraron los parámetros para coincidir con el resto de la clase
+        public double FormulaTaylor5(double x, double x0, double b, double incremento, DataGridView dgvResultado)
         {
-            float T;
-            float real;
+            double T;
+            double real;
             int i = 1;
-            float h;
+            double h;
 
             dgvResultado.Rows.Clear();
             dgvResultado.Columns.Clear();
             dgvResultado.Columns.Add("iteracion", "i");
             dgvResultado.Columns.Add("incremento", "x0");
-            dgvResultado.Columns.Add("Aproximacion", "Taylor4");
+            dgvResultado.Columns.Add("Aproximacion", "Taylor5");
             dgvResultado.Columns.Add("Solucion_Real", "SolExacta");
 
             if (incremento <= 0)
@@ -258,23 +249,21 @@ namespace ProyectoMetodos
 
             while (x0 <= b)
             {
-                h = x - x0; // Recalcular h en cada iteración
-
+                h = x - x0;
                 real = FuncPrin(x);
 
-                // Aproximación con Taylor de segundo orden
-                T = FuncPrin(x0) // Término constante
-                       + (FuncDer_1(x0) * h) // primer orden
-                       + ((FuncDer_2(x0) / 2) * (float)Math.Pow(h, 2.0)) //segundo orden
-                       + ((FuncDer_3(x0) / 6) * (float)Math.Pow(h, 3.0)) //tercer orden
-                       + ((FuncPrin(x0) / 24) * (float)Math.Pow(h, 4.0)) //cuarto orden
-                       + ((FuncDer_1(x0) / 120) * (float)Math.Pow(h, 5.0)); //quinto orden
+                T = FuncPrin(x0)
+                       + (FuncDer_1(x0) * h)
+                       + ((FuncDer_2(x0) / 2.0) * Math.Pow(h, 2.0))
+                       + ((FuncDer_3(x0) / 6.0) * Math.Pow(h, 3.0))
+                       + ((FuncPrin(x0) / 24.0) * Math.Pow(h, 4.0))
+                       + ((FuncDer_1(x0) / 120.0) * Math.Pow(h, 5.0));
 
                 int newRowIdx = dgvResultado.Rows.Add();
-                dgvResultado.Rows[newRowIdx].Cells[0].Value = i; // Iteración
-                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4); // Valor de x0
-                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6); // Aprox
-                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6); //real
+                dgvResultado.Rows[newRowIdx].Cells[0].Value = i;
+                dgvResultado.Rows[newRowIdx].Cells[1].Value = Math.Round(x0, 4);
+                dgvResultado.Rows[newRowIdx].Cells[2].Value = Math.Round(T, 6);
+                dgvResultado.Rows[newRowIdx].Cells[3].Value = Math.Round(real, 6);
 
                 x0 += incremento;
                 x += incremento;
@@ -285,32 +274,24 @@ namespace ProyectoMetodos
             return 0;
         }
 
-
-        private float FuncPrin(float x) //funcion principal, derivada 4
+        private double FuncPrin(double x)
         {
-            return (float)Math.Cos(x);
+            return Math.Cos(x);
         }
 
-        private float FuncDer_1(float x) //derivada 1 y 5
+        private double FuncDer_1(double x)
         {
-            float y;
-            y = -((float)Math.Sin(x));
-            return y;
+            return -Math.Sin(x);
         }
 
-        private float FuncDer_2(float x) //derivada 2
+        private double FuncDer_2(double x)
         {
-            float y;
-            y = -(float)Math.Cos(x);
-            return y;
+            return -Math.Cos(x);
         }
 
-        private float FuncDer_3(float x) //derivada 3
+        private double FuncDer_3(double x)
         {
-            float y;
-            y= ((float)Math.Sin(x));
-            return y;
+            return Math.Sin(x);
         }
     }
 }
-

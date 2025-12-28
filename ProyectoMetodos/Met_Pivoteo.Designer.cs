@@ -18,7 +18,7 @@
             this.cmbTipoPivoteo = new System.Windows.Forms.ComboBox();
             this.btnCalcular = new System.Windows.Forms.Button();
             this.dgvResultado = new System.Windows.Forms.DataGridView();
-            this.lblOrden = new System.Windows.Forms.Label();
+            
             this.labelN = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatriz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).BeginInit();
@@ -56,11 +56,7 @@
             this.dgvResultado.AllowUserToAddRows = false;
             this.dgvResultado.ReadOnly = true;
 
-            this.lblOrden.Location = new System.Drawing.Point(20, 400);
-            
-            this.lblOrden.AutoSize = true;
-            this.lblOrden.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
-
+           
             this.ClientSize = new System.Drawing.Size(650, 450);
             this.Text = " Pivoteo";
             this.Controls.Add(this.labelN);
@@ -70,7 +66,7 @@
             this.Controls.Add(this.cmbTipoPivoteo);
             this.Controls.Add(this.btnCalcular);
             this.Controls.Add(this.dgvResultado);
-            this.Controls.Add(this.lblOrden);
+    
 
             ((System.ComponentModel.ISupportInitialize)(this.dgvMatriz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResultado)).EndInit();
@@ -82,6 +78,6 @@
         private System.Windows.Forms.Button btnGenerar, btnCalcular;
         private System.Windows.Forms.DataGridView dgvMatriz, dgvResultado;
         private System.Windows.Forms.ComboBox cmbTipoPivoteo;
-        private System.Windows.Forms.Label lblOrden, labelN;
+        private System.Windows.Forms.Label  labelN;
     }
 }

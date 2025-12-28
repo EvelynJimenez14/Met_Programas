@@ -49,14 +49,14 @@ namespace ProyectoMetodos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            float x0, x, b, incremento;
+            double x0, x, b, incremento;
             Taylor formulatay = new Taylor();
-            float Result;
+            double Result;
 
-            x0 = float.Parse(x0txt.Text);
-            x = float.Parse(xtxt.Text);
+            x0 = double.Parse(x0txt.Text);
+            x = double.Parse(xtxt.Text);
             b = float.Parse(btxt.Text);
-            incremento = float.Parse(incrementotxt.Text);
+            incremento = double.Parse(incrementotxt.Text);
 
             Result = formulatay.FormulaTaylor1(x0, x, b, incremento, this.dataGridView1);
             this.WindowState = FormWindowState.Maximized;

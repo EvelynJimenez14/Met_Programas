@@ -26,10 +26,10 @@ namespace ProyectoMetodos
         {
             Integracion integracion = new Integracion();
 
-            float a = float.Parse(A_txt.Text.ToString());
-            float b = float.Parse(B_txt.Text.ToString());
+            double a = double.Parse(A_txt.Text.ToString());
+            double b = double.Parse(B_txt.Text.ToString());
 
-            float resultado = integracion.MetodoCuadraturaGaussiana(a, b);
+            double resultado = integracion.MetodoCuadraturaGaussiana(a, b);
             Resultado_txt.Text = resultado.ToString();
         }
     }

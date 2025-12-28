@@ -158,12 +158,6 @@
       <DependentUpon>FrmRKFehlberg.cs</DependentUpon>
     </Compile>
     <Compile Include="Integracion.cs" />
-    <Compile Include="Integracion_Abierta_Trapecio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Integracion_Abierta_Trapecio.Designer.cs">
-      <DependentUpon>Integracion_Abierta_Trapecio.cs</DependentUpon>
-    </Compile>
     <Compile Include="Integracion_Cuadratura_Adaptativa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,12 +189,6 @@
       <DependentUpon>Integracion_Trapecio.cs</DependentUpon>
     </Compile>
     <Compile Include="Interpolacion.cs" />
-    <Compile Include="LU.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="LU.Designer.cs">
-      <DependentUpon>LU.cs</DependentUpon>
-    </Compile>
     <Compile Include="Matrices.cs" />
     <Compile Include="Menu.cs">
       <SubType>Form</SubType>
@@ -238,12 +226,6 @@
     <Compile Include="Metodo_Falsa_Posicion.Designer.cs">
       <DependentUpon>Metodo_Falsa_Posicion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Metodo_Horner.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Metodo_Horner.Designer.cs">
-      <DependentUpon>Metodo_Horner.cs</DependentUpon>
-    </Compile>
     <Compile Include="Metodo_Muller.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,12 +244,6 @@
     <Compile Include="Metodo_Punto_Fijo.Designer.cs">
       <DependentUpon>Metodo_Punto_Fijo.cs</DependentUpon>
     </Compile>
-    <Compile Include="Metodo_RungeKuta2.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Metodo_RungeKuta2.Designer.cs">
-      <DependentUpon>Metodo_RungeKuta2.cs</DependentUpon>
-    </Compile>
     <Compile Include="Metodo_Runge_Kuta4.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -280,12 +256,6 @@
     <Compile Include="Metodo_Secante.Designer.cs">
       <DependentUpon>Metodo_Secante.cs</DependentUpon>
     </Compile>
-    <Compile Include="Metodo_Steffensen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Metodo_Steffensen.Designer.cs">
-      <DependentUpon>Metodo_Steffensen.cs</DependentUpon>
-    </Compile>
     <Compile Include="MetSolEc.cs" />
     <Compile Include="Met_Pivoteo.cs">
       <SubType>Form</SubType>
@@ -294,18 +264,6 @@
       <DependentUpon>Met_Pivoteo.cs</DependentUpon>
     </Compile>
     <Compile Include="Pivoteo.cs" />
-    <Compile Include="Pivoteo_Parcial_Escalado.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pivoteo_Parcial_Escalado.Designer.cs">
-      <DependentUpon>Pivoteo_Parcial_Escalado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Pivote_Maximo_Columna.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Pivote_Maximo_Columna.Designer.cs">
-      <DependentUpon>Pivote_Maximo_Columna.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RK34.cs">
@@ -321,12 +279,6 @@
       <DependentUpon>Rugen_Kutta_4_SEDOS.cs</DependentUpon>
     </Compile>
     <Compile Include="SEDOS_Rugen_Kutta.cs" />
-    <Compile Include="Simpson_Compuesta_Multiple.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Simpson_Compuesta_Multiple.Designer.cs">
-      <DependentUpon>Simpson_Compuesta_Multiple.cs</DependentUpon>
-    </Compile>
     <Compile Include="SistemasEDO.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,12 +287,6 @@
     </Compile>
     <Compile Include="Sist_Ec_Lineales.cs" />
     <Compile Include="Taylor.cs" />
-    <Compile Include="Trapecio_Compuesta_Multiple.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Trapecio_Compuesta_Multiple.Designer.cs">
-      <DependentUpon>Trapecio_Compuesta_Multiple.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Eliminacion_Gaussiana.resx">
       <DependentUpon>Eliminacion_Gaussiana.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,9 +341,6 @@
     <EmbeddedResource Include="FrmRKFehlberg.resx">
       <DependentUpon>FrmRKFehlberg.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Integracion_Abierta_Trapecio.resx">
-      <DependentUpon>Integracion_Abierta_Trapecio.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Integracion_Cuadratura_Adaptativa.resx">
       <DependentUpon>Integracion_Cuadratura_Adaptativa.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,9 +355,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Integracion_Trapecio.resx">
       <DependentUpon>Integracion_Trapecio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LU.resx">
-      <DependentUpon>LU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Menu.resx">
       <DependentUpon>Menu.cs</DependentUpon>
@@ -434,9 +374,6 @@
     <EmbeddedResource Include="Metodo_Falsa_Posicion.resx">
       <DependentUpon>Metodo_Falsa_Posicion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Metodo_Horner.resx">
-      <DependentUpon>Metodo_Horner.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Metodo_Muller.resx">
       <DependentUpon>Metodo_Muller.cs</DependentUpon>
     </EmbeddedResource>
@@ -452,17 +389,8 @@
     <EmbeddedResource Include="Metodo_Secante.resx">
       <DependentUpon>Metodo_Secante.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Metodo_Steffensen.resx">
-      <DependentUpon>Metodo_Steffensen.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Met_Pivoteo.resx">
       <DependentUpon>Met_Pivoteo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pivoteo_Parcial_Escalado.resx">
-      <DependentUpon>Pivoteo_Parcial_Escalado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Pivote_Maximo_Columna.resx">
-      <DependentUpon>Pivote_Maximo_Columna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -479,14 +407,8 @@
     <EmbeddedResource Include="Rugen_Kutta_4_SEDOS.resx">
       <DependentUpon>Rugen_Kutta_4_SEDOS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Simpson_Compuesta_Multiple.resx">
-      <DependentUpon>Simpson_Compuesta_Multiple.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="SistemasEDO.resx">
       <DependentUpon>SistemasEDO.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Trapecio_Compuesta_Multiple.resx">
-      <DependentUpon>Trapecio_Compuesta_Multiple.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -59,15 +59,15 @@ namespace ProyectoMetodos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            float a;
-            float b;
+            double a;
+            double b;
             int n;
-            float resultado;
+            double resultado;
 
             Integracion MetIntegracion = new Integracion();
 
-            a = float.Parse(A_txt.Text);
-            b = float.Parse(B_txt.Text);
+            a = double.Parse(A_txt.Text);
+            b = double.Parse(B_txt.Text);
             n = int.Parse(N_txt.Text);
 
             resultado = MetIntegracion.Simpson1_3(a, b, n);

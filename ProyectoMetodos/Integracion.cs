@@ -1,393 +1,148 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ProyectoMetodos
 {
     internal class Integracion
     {
-        public float x0;
-        public float xn;
-        public int n;
-        
-        public float MetodoTrapecio(float x0, float xn, int NumSubInt)
+        private const int MAX_NIVEL = 20;
+        public double MetodoTrapecio(double x0, double xn, int NumSubInt)
         {
-            float h;
-            float sumatoria;
-            float a = x0;
-            float b = xn;
-            int n = NumSubInt;
-            int i;
-
             if (NumSubInt <= 0)
             {
-                MessageBox.Show("El numero de subintervalos debe ser mayor a 0", "ERROR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("El numero de subintervalos debe ser mayor a 0", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return -1;
             }
 
-            h = (b - a) / n;
-            sumatoria = 0;
+            double h = (xn - x0) / NumSubInt;
+            double sumatoria = 0;
 
-            for (i = 1; i < n; i++)
+            for (int i = 1; i < NumSubInt; i++)
             {
-                sumatoria += funcion(a + i * h);
+                sumatoria += funcion(x0 + i * h);
             }
+
             
-            sumatoria = sumatoria * h;
-            sumatoria += h * (funcion(a) + funcion(b)) / 2;
-            return sumatoria;
+            return (h / 2.0) * (funcion(x0) + 2 * sumatoria + funcion(xn));
         }
 
-        public float MetodoTrapecioMultiple(float x0, float xn, int numSubIntX, float y0, float ym, float numSubIntY)
+        public double Simpson1_3(double x0, double xn, int k)
         {
+            if (k <= 0) return -1;
 
-            float hx, hy;
-            float resultado = 0;
-            float n = numSubIntX;
-            float m = numSubIntY;
-            
-            hx = (xn - x0) / n;
-            hy = (ym - y0) / m;
+            double n = 2.0 * k;
+            double h = (xn - x0) / n;
+            double sum1 = 0;
+            double sum2 = 0;
 
-            float sum = 0;
-            float sum2 = 0;
-            float sum3 = 0;
+            for (int i = 1; i <= k; i++)
+                sum1 += funcion(x0 + (2 * i - 1) * h);
 
-       
-            for (int j = 0; (j < m - 1); j ++)
-            {
-                sum = funcion2(x0, y0 + (hy * j));
-            }
+            for (int i = 1; i < k; i++)
+                sum2 += funcion(x0 + 2 * i * h);
 
-            resultado += ((hx * hy) / 2) * (funcion2(x0, y0) / 2) + sum + (funcion2(x0, ym) / 2) ;
-
-            sum = 0;
-            for (int i = 0;  (i < n - 1); i++)
-            {
-                sum = funcion2(x0 + (hx * i), y0);
-            }
-
-            for (int i = 0; (i < n - 1); i++)
-            {
-                for (int j = 0; (j < m - 1); j++)
-                {
-                    sum2 = funcion2(x0 + (hx * i) , y0 + (hy * j));
-                }
-            }
-
-            for (int i = 1; (i < (n - 1)); i++)
-            {
-                sum3 = funcion2(x0 + (hx * (i + 1)), ym);
-            }
-
-            resultado += hx * hy * ((sum / 2) + sum2 + (sum3 / 2));
-
-            sum = 0;
-            for (int j = 0; j < (m - 1); j++)
-            {
-                sum += funcion2(xn, y0 + (hy * j));
-            }
-
-            resultado += ((hx * hy) / 2) * ( (funcion2(xn, y0) / 2) + sum + (funcion2(xn, ym) / 2)) ;
-
-            return resultado;
+            return (h / 3.0) * (funcion(x0) + 4 * sum1 + 2 * sum2 + funcion(xn));
         }
 
-        public float Simpson1_3(float x0, float xn, int k)
+        public double Simpson3_8(double x0, double xn, int k)
         {
-            float h;
-            float sum1 = 0;
-            float sum2 = 0;
-            float n = 2 * k;
-            float a = x0;
-            float b = xn;
+            if (k <= 0) return -1;
 
-            if (k <= 0)
-            {
-                MessageBox.Show("El numero de k debe ser mayor a 0", "ERROR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
-            }
-
-            h = (b - a) / n;
+            double n = 3.0 * k;
+            double h = (xn - x0) / n;
+            double sum1 = 0, sum2 = 0, sum3 = 0;
 
             for (int i = 1; i <= k; i++)
             {
-                sum1 += funcion(a + (2 * i - 1) * h);
+                sum1 += funcion(x0 + (3 * i - 2) * h);
+                sum2 += funcion(x0 + (3 * i - 1) * h);
             }
-
-            sum1 = 4 * sum1;
 
             for (int i = 1; i < k; i++)
-            {
-                sum2 += funcion(a + 2 * i * h);
-            }
-            sum2 = 2 * sum2;
+                sum3 += funcion(x0 + (3 * i) * h);
 
-            sum1 = (h / 3) * (funcion(a) + sum1 + sum2 + funcion(b));
-            return sum1;
+            return ((3.0 * h) / 8.0) * (funcion(x0) + 3 * sum1 + 3 * sum2 + 2 * sum3 + funcion(xn));
         }
 
-        public float Simpson3_8(float x0, float xn, int k)
+        public double IntegralDoble_trapecio(double a, double b, double c, double d, int n_x, int n_y)
         {
-            float h;
-            float sum1 = 0;
-            float sum2 = 0;
-            float sum3 = 0;
-            float n = 3 * k;
-            float a = x0;
-            float b = xn;
-            float formula;
-
-            if (k <= 0)
-            {
-                MessageBox.Show("El numero de k debe ser mayor a 0", "ERROR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
-            }
-
-            h = (b - a) / n;
-
-            for(int i = 1; i <= k; i++)
-            {
-                sum1 += funcion(a + (3 * i - 2) * h);
-            }
-
-            sum1 = 3 * sum1;
-
-            for (int i = 1; i <= k; i++)
-            {
-                sum2 += funcion(a + (3 * i - 1) * h);
-            }
-
-            sum2 = 3 * sum2;
-
-            for (int i = 1; i < k; i++)
-            {
-                sum3 += funcion(a + (3 * i) * h);
-            }
-
-            sum3 = 2 * sum3;
-
-            formula =  ((3 * h) / 8) * (funcion(a) + sum1 + sum2 + sum3 + funcion(b));
-
-            return formula;
-
-        }
-
-        public float IntegralDoble_trapecio(float a, float b, float c, float d, int n_x, int n_y)
-        {
-            // Paso en x y en y
-            float h_x = (b - a) / n_x;
-            float h_y = (d - c) / n_y;
-
-            float sum = 0;
+            double h_x = (b - a) / n_x;
+            double h_y = (d - c) / n_y;
+            double sum = 0;
 
             for (int i = 0; i <= n_x; i++)
             {
-                float x_i = a + i * h_x;
-
-                float f_c = Func(x_i, c);
-                float f_d = Func(x_i, d);
-
-                sum += (1/2) * (f_c + f_d); 
-
-                for (int j = 1; j < n_y; j++)
-                {
-                    float y_j = c + j * h_y;
-                    sum += 2 * Func(x_i, y_j);
-                }
-            }
-
-            sum *= h_x * h_y;
-
-            return sum;
-        }
-
-        public float IntegralDoble_Simpson(float a, float b, float c, float d, int n_x, int n_y)
-        {
-            float h_x = (b - a) / n_x;
-            float h_y = (d - c) / n_y;
-
-            float sum = 0;
-
-            sum += Func(a, c) + Func(a, d) + Func(b, c) + Func(b, d);
-
-            for (int i = 1; i < n_x; i++)
-            {
-                float x_i = a + i * h_x;
-
-                sum += 4 * Func(x_i, c) + 4 * Func(x_i, d);
-
-                for (int j = 1; j < n_y; j++)
-                {
-                    float y_j = c + j * h_y;
-                    sum += 2 * Func(x_i, y_j);
-                }
-            }
-
-            for (int j = 1; j < n_y; j++)
-            {
-                float y_j = c + j * h_y;
-
-                sum += 4 * Func(a, y_j) + 4 * Func(b, y_j);
-
-                for (int i = 1; i < n_x; i++)
-                {
-                    float x_i = a + i * h_x;
-                    sum += 16 * Func(x_i, y_j);
-                }
-            }
-
-            sum *= h_x * h_y / 9;
-
-            return sum;
-        }
-        /*
-
-        float integral_doble_numerica(float x0, float xn, 
-            float y0, float ym, int n, int m)
-        {
-            float resultado = 0;
-            float hx, hy;
-            float sum1 = 0;
-            float sum2 = 0;
-            int i, j;
-
-            hx = (xn - x0) / 2;
-            hy = (ym - y0) / 2;
-
-            for(j=1; j<m; j++)
-            {
-                sum1 = sum1 + funcion2(x0, y0 + hy * j);
+                double x_i = a + i * h_x;
                 
-            }
-            sum1 = (sum1 + funcion2(x0, y0) / 2 + funcion2(x0, ym) / 2);
-            resultado = sum1;
-            sum1 = 0;
+                double pesoX = (i == 0 || i == n_x) ? 0.5 : 1.0;
 
-            for (i = 1; i<xn; i++)
+                for (int j = 0; j <= n_y; j++)
+                {
+                    double y_j = c + j * h_y;
+                    double pesoY = (j == 0 || j == n_y) ? 0.5 : 1.0;
+                    sum += pesoX * pesoY * Func(x_i, y_j);
+                }
+            }
+            return sum * h_x * h_y;
+        }
+
+        public double IntegralDoble_Simpson(double a, double b, double c, double d, int n_x, int n_y)
+        {
+            double h_x = (b - a) / n_x;
+            double h_y = (d - c) / n_y;
+            double sum = 0;
+
+            for (int i = 0; i <= n_x; i++)
             {
-                sum1=
+                double x_i = a + i * h_x;
+                double pesoX = (i == 0 || i == n_x) ? 1.0 : (i % 2 == 0 ? 2.0 : 4.0);
+
+                for (int j = 0; j <= n_y; j++)
+                {
+                    double y_j = c + j * h_y;
+                    double pesoY = (j == 0 || j == n_y) ? 1.0 : (j % 2 == 0 ? 2.0 : 4.0);
+                    sum += pesoX * pesoY * Func(x_i, y_j);
+                }
             }
-            return resultado;
+            return (h_x * h_y / 9.0) * sum;
         }
-        */
 
-
-        public float MetodoCuadraturaAdaptativa(float x0, float xn, int NumSubInt, float tolerancia)
+        public double MetodoCuadraturaGaussiana(double x0, double xn)
         {
-            float h;
-            float suma;
-            float a = x0;
-            float b = xn;
-            int n = NumSubInt;
-            int i;
+            double c1 = (xn - x0) / 2.0;
+            double c2 = (xn + x0) / 2.0;
+            double x1 = -1.0 / Math.Sqrt(3.0);
+            double x2 = 1.0 / Math.Sqrt(3.0);
+            return c1 * (funcion(c1 * x1 + c2) + funcion(c1 * x2 + c2));
+        }
+        public double MetodoCuadraturaAdaptativa(double a, double b, double tolerancia, int nivel = 0)
+        {
+            
+            double c = (a + b) / 2.0;
+            double h = (b - a) / 6.0;
+            double areaTotal = h * (funcion(a) + 4 * funcion(c) + funcion(b));
 
-            if (NumSubInt <= 0)
+            
+            double d = (a + c) / 2.0;
+            double e = (c + b) / 2.0;
+            double h2 = (b - a) / 12.0;
+            double areaIzquierda = h2 * (funcion(a) + 4 * funcion(d) + funcion(c));
+            double areaDerecha = h2 * (funcion(c) + 4 * funcion(e) + funcion(b));
+
+            
+           
+            if (Math.Abs(areaIzquierda + areaDerecha - areaTotal) <= 15 * tolerancia || nivel >= MAX_NIVEL)
             {
-                MessageBox.Show("El número de subintervalos debe ser mayor a 0", "ERROR",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return -1;
+                return areaIzquierda + areaDerecha + (areaIzquierda + areaDerecha - areaTotal) / 15.0;
             }
 
-            h = (b - a) / n;
-            suma = (funcion(a) + funcion(b)) / 2;
-            for (i = 1; i < n; i++)
-            {
-                suma += funcion(a + i * h);
-            }
-            suma *= h;
-
-            float error = EstimarError(x0, xn, n);
-
-            if (error <= tolerancia)
-            {
-                return suma;
-            }
-            else
-            {
-                float medio = (a + b) / 2;
-                float sumaIzq = MetodoCuadraturaAdaptativa(a, medio, n / 2, tolerancia);
-                float sumaDer = MetodoCuadraturaAdaptativa(medio, b, n / 2, tolerancia);
-
-                return sumaIzq + sumaDer;
-            }
+            
+            return MetodoCuadraturaAdaptativa(a, c, tolerancia / 2.0, nivel + 1) +
+                   MetodoCuadraturaAdaptativa(c, b, tolerancia / 2.0, nivel + 1);
         }
 
-        public float EstimarError(float x0, float xn, int n)
-        {
-            float h = (xn - x0) / n;
-            float suma1 = (funcion(x0) + funcion(xn)) / 2;
+        private double funcion(double x) => x * Math.Sin(x);
 
-            for (int i = 1; i < n; i++)
-            {
-                suma1 += funcion(x0 + i * h);
-            }
-            suma1 *= h;
-
-            int n2 = 2 * n;
-            float h2 = (xn - x0) / n2;
-            float suma2 = (funcion(x0) + funcion(xn)) / 2;
-
-            for (int i = 1; i < n2; i++)
-            {
-                suma2 += funcion(x0 + i * h2);
-            }
-            suma2 *= h2;
-
-            return Math.Abs(suma2 - suma1) / 3;
-        }
-
-        public float MetodoCuadraturaGaussiana(float x0, float xn)
-        {
-            float suma = 0;
-            float c1 = (xn - x0) / 2;
-            float c2 = (xn + x0) / 2;
-
-            float x1 = (float)(-1 / Math.Sqrt(3));
-            float x2 = (float) (1 / Math.Sqrt(3));
-
-            suma += c1 * (funcion(c1 * x1 + c2) + funcion(c1 * x2 + c2));
-
-            return suma;
-        }
-
-        public float MetodoTrapecioabierto(float x0, float h)
-        {
-            return 2 * h * funcion(x0);
-        }
-
-        public float MetodoSimpsonAbierto(float x0, float h)
-        {
-            return (float) ((3 * h) / 2) * funcion(x0);
-        }
-
-        float funcion(float x)
-        {
-            float r;
-            r = x * (float)Math.Sin(x);
-            return r;
-        }
-
-        float funcion2(float x, float y)
-        {
-            float res;
-            float r = (float) Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2));
-
-            res =  r * (float) Math.Sin(r);
-
-            return res;
-        }
-
-        public float Func(float x, float y)
-        {
-            return x * x + y * y;
-        }
+        private double Func(double x, double y) => x * x + y * y;
     }
 }
