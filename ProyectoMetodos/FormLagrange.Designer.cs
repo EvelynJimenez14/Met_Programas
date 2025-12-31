@@ -3,109 +3,144 @@
     partial class FormLagrange
     {
         /// <summary>
-        /// Variable del diseñador necesaria.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Limpiar los recursos que se estén usando.
+        /// Clean up any resources being used.
         /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
-            if (disposing && (components != null))
-            {
-                components.Dispose();
-            }
+            if (disposing && (components != null)) components.Dispose();
             base.Dispose(disposing);
         }
 
-        #region Código generado por el Diseñador de Windows Forms
+        #region Windows Form Designer generated code
 
+        /// <summary>
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            this.txtX = new System.Windows.Forms.TextBox();
-            this.txtY = new System.Windows.Forms.TextBox();
-            this.txtValor = new System.Windows.Forms.TextBox();
-            this.lblResultado = new System.Windows.Forms.Label();
-            this.btnCalcular = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle styleHeader = new System.Windows.Forms.DataGridViewCellStyle();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblX = new System.Windows.Forms.Label();
+            this.lblY = new System.Windows.Forms.Label();
+            this.lblValor = new System.Windows.Forms.Label();
+            this.txtPuntosX = new System.Windows.Forms.TextBox();
+            this.txtPuntosY = new System.Windows.Forms.TextBox();
+            this.txtValorAInterpolar = new System.Windows.Forms.TextBox();
+            this.btnCalcularLagrange = new System.Windows.Forms.Button();
+            this.dgvLagrange = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLagrange)).BeginInit();
             this.SuspendLayout();
-
-            // label1
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 20);
-            this.label1.Text = "Valores X (separados por coma):";
-
-            // txtX
-            this.txtX.Location = new System.Drawing.Point(20, 45);
-            this.txtX.Size = new System.Drawing.Size(300, 22);
-            this.txtX.Text = "1, 2, 3";
-
-            // label2
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 80);
-            this.label2.Text = "Valores Y (separados por coma):";
-
-            // txtY
-            this.txtY.Location = new System.Drawing.Point(20, 105);
-            this.txtY.Size = new System.Drawing.Size(300, 22);
-            this.txtY.Text = "2, 4, 6";
-
-            // label3
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 140);
-            this.label3.Text = "Valor a Interpolar:";
-
-            // txtValor
-            this.txtValor.Location = new System.Drawing.Point(20, 165);
-            this.txtValor.Size = new System.Drawing.Size(100, 22);
-            this.txtValor.Text = "1.5";
-
-            // btnCalcular
-            this.btnCalcular.BackColor = System.Drawing.Color.LightBlue;
-            this.btnCalcular.Location = new System.Drawing.Point(140, 160);
-            this.btnCalcular.Size = new System.Drawing.Size(100, 30);
-            this.btnCalcular.Text = "Calcular";
-            this.btnCalcular.UseVisualStyleBackColor = false;
-            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
-
-            // lblResultado
-            this.lblResultado.AutoSize = true;
-            this.lblResultado.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
-            this.lblResultado.ForeColor = System.Drawing.Color.Blue;
-            this.lblResultado.Location = new System.Drawing.Point(20, 220);
-            this.lblResultado.Text = "Resultado: ";
-
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Lucida Sans", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.Black;
+            this.lblTitulo.Location = new System.Drawing.Point(80, 20);
+            this.lblTitulo.Text = "INTERPOLACION LAGRANGE";
+            // 
+            // lblX
+            // 
+            this.lblX.AutoSize = true;
+            this.lblX.Font = new System.Drawing.Font("Lucida Sans", 9F);
+            this.lblX.ForeColor = System.Drawing.Color.Black;
+            this.lblX.Location = new System.Drawing.Point(30, 75);
+            this.lblX.Text = "Puntos X:";
+            // 
+            // lblY
+            // 
+            this.lblY.AutoSize = true;
+            this.lblY.Font = new System.Drawing.Font("Lucida Sans", 9F);
+            this.lblY.ForeColor = System.Drawing.Color.Black;
+            this.lblY.Location = new System.Drawing.Point(30, 115);
+            this.lblY.Text = "Puntos Y:";
+            // 
+            // lblValor
+            // 
+            this.lblValor.AutoSize = true;
+            this.lblValor.Font = new System.Drawing.Font("Lucida Sans", 9F);
+            this.lblValor.ForeColor = System.Drawing.Color.Black;
+            this.lblValor.Location = new System.Drawing.Point(30, 155);
+            this.lblValor.Text = "Valor a interpolar:";
+            // 
+            // txtPuntosX
+            // 
+            this.txtPuntosX.Location = new System.Drawing.Point(150, 72);
+            this.txtPuntosX.Size = new System.Drawing.Size(200, 20);
+            // 
+            // txtPuntosY
+            // 
+            this.txtPuntosY.Location = new System.Drawing.Point(150, 112);
+            this.txtPuntosY.Size = new System.Drawing.Size(200, 20);
+            // 
+            // txtValorAInterpolar
+            // 
+            this.txtValorAInterpolar.Location = new System.Drawing.Point(150, 152);
+            this.txtValorAInterpolar.Size = new System.Drawing.Size(200, 20);
+            // 
+            // btnCalcularLagrange
+            // 
+            this.btnCalcularLagrange.BackColor = System.Drawing.Color.Black;
+            this.btnCalcularLagrange.ForeColor = System.Drawing.Color.White;
+            this.btnCalcularLagrange.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold);
+            this.btnCalcularLagrange.Location = new System.Drawing.Point(380, 100);
+            this.btnCalcularLagrange.Size = new System.Drawing.Size(120, 50);
+            this.btnCalcularLagrange.Text = "Calcular";
+            this.btnCalcularLagrange.UseVisualStyleBackColor = false;
+            this.btnCalcularLagrange.Click += new System.EventHandler(this.btnCalcularLagrange_Click);
+            // 
+            // dgvLagrange
+            // 
+            this.dgvLagrange.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLagrange.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            styleHeader.BackColor = System.Drawing.Color.Black;
+            styleHeader.ForeColor = System.Drawing.Color.White;
+            styleHeader.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold);
+            this.dgvLagrange.ColumnHeadersDefaultCellStyle = styleHeader;
+            this.dgvLagrange.EnableHeadersVisualStyles = false;
+            this.dgvLagrange.Location = new System.Drawing.Point(30, 200);
+            this.dgvLagrange.Size = new System.Drawing.Size(600, 250);
+            this.dgvLagrange.RowHeadersVisible = false;
+            this.dgvLagrange.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            // 
             // FormLagrange
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(380, 300);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtX);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtY);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtValor);
-            this.Controls.Add(this.btnCalcular);
-            this.Controls.Add(this.lblResultado);
+            // 
+            this.ClientSize = new System.Drawing.Size(680, 480);
+            this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.lblX);
+            this.Controls.Add(this.lblY);
+            this.Controls.Add(this.lblValor);
+            this.Controls.Add(this.txtPuntosX);
+            this.Controls.Add(this.txtPuntosY);
+            this.Controls.Add(this.txtValorAInterpolar);
+            this.Controls.Add(this.btnCalcularLagrange);
+            this.Controls.Add(this.dgvLagrange);
             this.Name = "FormLagrange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Interpolación de Lagrange";
+            this.Text = "Interpolación - Lagrange";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLagrange)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtX;
-        private System.Windows.Forms.TextBox txtY;
-        private System.Windows.Forms.TextBox txtValor;
-        private System.Windows.Forms.Label lblResultado;
-        private System.Windows.Forms.Button btnCalcular;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblX;
+        private System.Windows.Forms.Label lblY;
+        private System.Windows.Forms.Label lblValor;
+        private System.Windows.Forms.TextBox txtPuntosX;
+        private System.Windows.Forms.TextBox txtPuntosY;
+        private System.Windows.Forms.TextBox txtValorAInterpolar;
+        private System.Windows.Forms.Button btnCalcularLagrange;
+        private System.Windows.Forms.DataGridView dgvLagrange;
     }
 }

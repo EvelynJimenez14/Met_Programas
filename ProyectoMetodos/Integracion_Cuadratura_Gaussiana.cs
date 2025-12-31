@@ -22,15 +22,32 @@ namespace ProyectoMetodos
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCalcular_Click(object sender, EventArgs e)
         {
-            Integracion integracion = new Integracion();
+            try
+            {
+                Integracion integracion = new Integracion();
 
-            double a = double.Parse(A_txt.Text.ToString());
-            double b = double.Parse(B_txt.Text.ToString());
+                
+                double a = double.Parse(A_txt.Text);
+                double b = double.Parse(B_txt.Text);
+                int n = int.Parse(N_txt.Text);
 
-            double resultado = integracion.MetodoCuadraturaGaussiana(a, b);
-            Resultado_txt.Text = resultado.ToString();
+               
+                if (n < 2 || n > 4)
+                {
+                    MessageBox.Show("Por favor, ingrese un grado válido (2, 3 o 4).", "Grado no soportado");
+                    return;
+                }
+
+               
+                double resultado = integracion.MetodoCuadraturaGaussiana(a, b, n);
+                Resultado_txt.Text = resultado.ToString("N10");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Asegúrese de que todos los campos tengan números válidos.", "Error de formato");
+            }
         }
     }
 }

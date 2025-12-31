@@ -31,7 +31,7 @@
             // Definición de Estilos para Segundo Parcial (Azul Profesional)
             System.Drawing.Font fuenteGrande = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             System.Drawing.Font fuenteTitulo = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            System.Drawing.Color azulEscom = System.Drawing.Color.MidnightBlue;
+            System.Drawing.Color azul = System.Drawing.Color.MidnightBlue;
 
             this.btxt = new System.Windows.Forms.TextBox();
             this.incrementotxt = new System.Windows.Forms.TextBox();
@@ -52,7 +52,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = fuenteTitulo;
-            this.label1.ForeColor = azulEscom;
+            this.label1.ForeColor = azul;
             this.label1.Location = new System.Drawing.Point(190, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(420, 37);
@@ -95,7 +95,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = fuenteGrande;
-            this.label6.ForeColor = azulEscom;
+            this.label6.ForeColor = azul;
             this.label6.Location = new System.Drawing.Point(310, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(193, 28);
@@ -106,7 +106,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = fuenteGrande;
-            this.label5.ForeColor = azulEscom;
+            this.label5.ForeColor = azul;
             this.label5.Location = new System.Drawing.Point(310, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(203, 28);
@@ -117,7 +117,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = fuenteGrande;
-            this.label2.ForeColor = azulEscom;
+            this.label2.ForeColor = azul;
             this.label2.Location = new System.Drawing.Point(30, 78);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 28);
@@ -128,7 +128,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = fuenteGrande;
-            this.label4.ForeColor = azulEscom;
+            this.label4.ForeColor = azul;
             this.label4.Location = new System.Drawing.Point(30, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(43, 28);

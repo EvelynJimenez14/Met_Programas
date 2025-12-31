@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace ProyectoMetodos
@@ -13,20 +12,24 @@ namespace ProyectoMetodos
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
-            
+           
             if (double.TryParse(A_txt.Text, out double a) &&
-                double.TryParse(B_txt.Text, out double b))
+                double.TryParse(B_txt.Text, out double b) &&
+                double.TryParse(Epsilon_txt.Text, out double eps))
             {
-                double tol = 0.00001; 
-
                 Integracion motor = new Integracion();
-                double resultado = motor.MetodoCuadraturaAdaptativa(a, b, tol, 0);
+
+               
+                double resultado = motor.MetodoCuadraturaAdaptativa(a, b, eps, 0);
 
                 Resultado_txt.Text = resultado.ToString("N10");
+
+                MessageBox.Show($"Cálculo completado con una tolerancia de: {eps}",
+                                "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Por favor, ingrese valores numéricos válidos en los límites.",
+                MessageBox.Show("Por favor, ingrese valores numéricos válidos en todos los campos.",
                                 "Error de Entrada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }

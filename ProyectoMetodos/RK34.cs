@@ -65,6 +65,12 @@ namespace ProyectoMetodos
                     i++;
                 }
                 dgvResultados.DataSource = lista;
+                double resultadoFinal = lista[lista.Count - 1].Y;
+               
+                MessageBox.Show($"La aproximación final en x = {xMax} es y = {resultadoFinal:F6}",
+                                "Resultado RK",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Information);
             }
             catch { MessageBox.Show("Error en los datos de entrada."); }
         }

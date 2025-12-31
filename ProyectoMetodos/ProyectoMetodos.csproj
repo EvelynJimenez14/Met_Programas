@@ -109,6 +109,12 @@
     <Compile Include="FrmDerivacion.Designer.cs">
       <DependentUpon>FrmDerivacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDerivadasHVariable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDerivadasHVariable.Designer.cs">
+      <DependentUpon>FrmDerivadasHVariable.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDifDivididas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,12 +132,6 @@
     </Compile>
     <Compile Include="FrmIntegracionMultiple.Designer.cs">
       <DependentUpon>FrmIntegracionMultiple.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmInterpolacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmInterpolacion.Designer.cs">
-      <DependentUpon>FrmInterpolacion.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmNeville.cs">
       <SubType>Form</SubType>
@@ -272,12 +272,6 @@
     <Compile Include="RK34.Designer.cs">
       <DependentUpon>RK34.cs</DependentUpon>
     </Compile>
-    <Compile Include="Rugen_Kutta_4_SEDOS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Rugen_Kutta_4_SEDOS.Designer.cs">
-      <DependentUpon>Rugen_Kutta_4_SEDOS.cs</DependentUpon>
-    </Compile>
     <Compile Include="SEDOS_Rugen_Kutta.cs" />
     <Compile Include="SistemasEDO.cs">
       <SubType>Form</SubType>
@@ -317,6 +311,9 @@
     <EmbeddedResource Include="FrmDerivacion.resx">
       <DependentUpon>FrmDerivacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDerivadasHVariable.resx">
+      <DependentUpon>FrmDerivadasHVariable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDifDivididas.resx">
       <DependentUpon>FrmDifDivididas.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,9 +322,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmIntegracionMultiple.resx">
       <DependentUpon>FrmIntegracionMultiple.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmInterpolacion.resx">
-      <DependentUpon>FrmInterpolacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmNeville.resx">
       <DependentUpon>FrmNeville.cs</DependentUpon>
@@ -403,9 +397,6 @@
     </Compile>
     <EmbeddedResource Include="RK34.resx">
       <DependentUpon>RK34.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Rugen_Kutta_4_SEDOS.resx">
-      <DependentUpon>Rugen_Kutta_4_SEDOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SistemasEDO.resx">
       <DependentUpon>SistemasEDO.cs</DependentUpon>

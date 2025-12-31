@@ -23,140 +23,117 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        /// Required method for Designer support - do not modify
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.Resultado_txt = new System.Windows.Forms.TextBox();
-            this.N_txt = new System.Windows.Forms.TextBox();
-            this.B_txt = new System.Windows.Forms.TextBox();
             this.A_txt = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.B_txt = new System.Windows.Forms.TextBox();
+            this.N_txt = new System.Windows.Forms.TextBox();
+            this.Resultado_txt = new System.Windows.Forms.TextBox();
+            this.btnCalcular = new System.Windows.Forms.Button();
+            this.lblA = new System.Windows.Forms.Label();
+            this.lblN = new System.Windows.Forms.Label();
+            this.lblRes = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // lblTitulo
             // 
-            this.button1.Font = new System.Drawing.Font("Lucida Sans", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(635, 137);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(103, 44);
-            this.button1.TabIndex = 48;
-            this.button1.Text = "Calcular";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Engravers MT", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.Location = new System.Drawing.Point(120, 25);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(430, 22);
+            this.lblTitulo.Text = "CUADRATURA GAUSSIANA";
             // 
-            // Resultado_txt
+            // lblA
             // 
-            this.Resultado_txt.Enabled = false;
-            this.Resultado_txt.Location = new System.Drawing.Point(247, 180);
-            this.Resultado_txt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Resultado_txt.Name = "Resultado_txt";
-            this.Resultado_txt.Size = new System.Drawing.Size(89, 22);
-            this.Resultado_txt.TabIndex = 47;
-            // 
-            // N_txt
-            // 
-            this.N_txt.Location = new System.Drawing.Point(247, 150);
-            this.N_txt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.N_txt.Name = "N_txt";
-            this.N_txt.Size = new System.Drawing.Size(89, 22);
-            this.N_txt.TabIndex = 46;
-            // 
-            // B_txt
-            // 
-            this.B_txt.Location = new System.Drawing.Point(355, 117);
-            this.B_txt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.B_txt.Name = "B_txt";
-            this.B_txt.Size = new System.Drawing.Size(89, 22);
-            this.B_txt.TabIndex = 45;
+            this.lblA.AutoSize = true;
+            this.lblA.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblA.Location = new System.Drawing.Point(50, 80);
+            this.lblA.Name = "lblA";
+            this.lblA.Size = new System.Drawing.Size(130, 17);
+            this.lblA.Text = "Intervalo [a, b] :";
             // 
             // A_txt
             // 
-            this.A_txt.Location = new System.Drawing.Point(247, 117);
-            this.A_txt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.A_txt.Location = new System.Drawing.Point(200, 77);
             this.A_txt.Name = "A_txt";
-            this.A_txt.Size = new System.Drawing.Size(89, 22);
-            this.A_txt.TabIndex = 44;
+            this.A_txt.Size = new System.Drawing.Size(80, 23);
             // 
-            // label4
+            // B_txt
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(101, 152);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 17);
-            this.label4.TabIndex = 43;
-            this.label4.Text = "n = ";
+            this.B_txt.Location = new System.Drawing.Point(290, 77);
+            this.B_txt.Name = "B_txt";
+            this.B_txt.Size = new System.Drawing.Size(80, 23);
             // 
-            // label3
+            // lblN
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(101, 181);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 17);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Resultado =";
+            this.lblN.AutoSize = true;
+            this.lblN.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblN.Location = new System.Drawing.Point(50, 115);
+            this.lblN.Name = "lblN";
+            this.lblN.Size = new System.Drawing.Size(150, 17);
+            this.lblN.Text = "Grado (n=2,3,4):";
             // 
-            // label2
+            // N_txt
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(101, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(131, 17);
-            this.label2.TabIndex = 41;
-            this.label2.Text = "Intervalo [a, b] :";
+            this.N_txt.Location = new System.Drawing.Point(200, 112);
+            this.N_txt.Name = "N_txt";
+            this.N_txt.Size = new System.Drawing.Size(170, 23);
             // 
-            // label1
+            // btnCalcular
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Engravers MT", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.label1.Location = new System.Drawing.Point(171, 73);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(449, 28);
-            this.label1.TabIndex = 40;
-            this.label1.Text = "Cuadratura Gaussiana";
+            this.btnCalcular.Font = new System.Drawing.Font("Lucida Sans", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnCalcular.Location = new System.Drawing.Point(450, 75);
+            this.btnCalcular.Name = "btnCalcular";
+            this.btnCalcular.Size = new System.Drawing.Size(120, 60);
+            this.btnCalcular.Text = "Calcular";
+            this.btnCalcular.UseVisualStyleBackColor = true;
+            this.btnCalcular.Click += new System.EventHandler(this.btnCalcular_Click);
+            // 
+            // lblRes
+            // 
+            this.lblRes.AutoSize = true;
+            this.lblRes.Font = new System.Drawing.Font("Lucida Sans", 11.25F, System.Drawing.FontStyle.Bold);
+            this.lblRes.Location = new System.Drawing.Point(50, 160);
+            this.lblRes.Name = "lblRes";
+            this.lblRes.Size = new System.Drawing.Size(102, 17);
+            this.lblRes.Text = "Resultado =";
+            // 
+            // Resultado_txt
+            // 
+            this.Resultado_txt.BackColor = System.Drawing.Color.White;
+            this.Resultado_txt.ReadOnly = true;
+            this.Resultado_txt.Location = new System.Drawing.Point(200, 157);
+            this.Resultado_txt.Name = "Resultado_txt";
+            this.Resultado_txt.Size = new System.Drawing.Size(250, 23);
             // 
             // Integracion_Cuadratura_Gaussiana
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Resultado_txt);
-            this.Controls.Add(this.N_txt);
-            this.Controls.Add(this.B_txt);
+            this.ClientSize = new System.Drawing.Size(650, 230);
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.lblA);
             this.Controls.Add(this.A_txt);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.B_txt);
+            this.Controls.Add(this.lblN);
+            this.Controls.Add(this.N_txt);
+            this.Controls.Add(this.btnCalcular);
+            this.Controls.Add(this.lblRes);
+            this.Controls.Add(this.Resultado_txt);
             this.Name = "Integracion_Cuadratura_Gaussiana";
-            this.Text = "Integracion_Cuadratura_Gaussiana";
-            this.Load += new System.EventHandler(this.Integracion_Cuadratura_Gaussiana_Load);
+            this.Text = "Cuadratura Gaussiana";
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox Resultado_txt;
-        private System.Windows.Forms.TextBox N_txt;
-        private System.Windows.Forms.TextBox B_txt;
-        private System.Windows.Forms.TextBox A_txt;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox A_txt, B_txt, N_txt, Resultado_txt;
+        private System.Windows.Forms.Button btnCalcular;
+        private System.Windows.Forms.Label lblA, lblN, lblRes, lblTitulo;
     }
 }

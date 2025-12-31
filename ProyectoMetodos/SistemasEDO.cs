@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data;
 using System.Windows.Forms;
 
 namespace ProyectoMetodos
@@ -9,16 +9,29 @@ namespace ProyectoMetodos
         public SistemasEDO()
         {
             InitializeComponent();
+            ConfigurarTabla();
         }
 
-        public class FilaSistema
+        private void ConfigurarTabla()
         {
-            public double T { get; set; }
-            public double U { get; set; }
-            public double V { get; set; }
-            public string Pasos_K_U { get; set; } // Muestra k1, k2, k3, k4 para U
-            public string Pasos_K_V { get; set; } // Muestra k1, k2, k3, k4 para V
+            dgvSistemas.Columns.Clear();
+            dgvSistemas.Columns.Add("t", "t");
+            dgvSistemas.Columns.Add("u", "w1 (u)");
+            dgvSistemas.Columns.Add("v", "w2 (v)");
+            
+            dgvSistemas.Columns.Add("k1u", "k1 u");
+            dgvSistemas.Columns.Add("k1v", "k1 v");
+            dgvSistemas.Columns.Add("k2u", "k2 u");
+            dgvSistemas.Columns.Add("k2v", "k2 v");
+            dgvSistemas.Columns.Add("k3u", "k3 u");
+            dgvSistemas.Columns.Add("k3v", "k3 v");
+            dgvSistemas.Columns.Add("k4u", "k4 u");
+            dgvSistemas.Columns.Add("k4v", "k4 v");
         }
+
+        
+        private double F1(double t, double u, double v) => v;
+        private double F2(double t, double u, double v) => -5 * v * u - (u + 7) * Math.Sin(t);
 
         private void btnCalcular_Click(object sender, EventArgs e)
         {
@@ -30,44 +43,38 @@ namespace ProyectoMetodos
                 double h = double.Parse(txtH.Text);
                 double tMax = double.Parse(txtTMax.Text);
 
-                List<FilaSistema> lista = new List<FilaSistema>();
+                dgvSistemas.Rows.Clear();
 
                 while (t <= tMax + 0.0001)
                 {
-                    // Ejemplo de aplicación: Sistema de oscilador
-                    // du/dt = v
-                    // dv/dt = -u
-                    double ku1 = v;
-                    double kv1 = -u;
+               
+                    double k11 = h * F1(t, u, v);
+                    double k12 = h * F2(t, u, v);
 
-                    double ku2 = v + (h / 2) * kv1;
-                    double kv2 = -(u + (h / 2) * ku1);
+                    double k21 = h * F1(t + h / 2.0, u + k11 / 2.0, v + k12 / 2.0);
+                    double k22 = h * F2(t + h / 2.0, u + k11 / 2.0, v + k12 / 2.0);
 
-                    double ku3 = v + (h / 2) * kv2;
-                    double kv3 = -(u + (h / 2) * ku2);
+                    double k31 = h * F1(t + h / 2.0, u + k21 / 2.0, v + k22 / 2.0);
+                    double k32 = h * F2(t + h / 2.0, u + k21 / 2.0, v + k22 / 2.0);
 
-                    double ku4 = v + h * kv3;
-                    double kv4 = -(u + h * ku3);
+                    double k41 = h * F1(t + h, u + k31, v + k32);
+                    double k42 = h * F2(t + h, u + k31, v + k32);
 
-                    lista.Add(new FilaSistema
-                    {
-                        T = t,
-                        U = u,
-                        V = v,
-                        Pasos_K_U = $"k1:{ku1:F3}, k2:{ku2:F3}, k3:{ku3:F3}, k4:{ku4:F3}",
-                        Pasos_K_V = $"k1:{kv1:F3}, k2:{kv2:F3}, k3:{kv3:F3}, k4:{kv4:F3}"
-                    });
+                    
+                    dgvSistemas.Rows.Add(Math.Round(t, 2), Math.Round(u, 6), Math.Round(v, 6),
+                        Math.Round(k11, 5), Math.Round(k12, 5),
+                        Math.Round(k21, 5), Math.Round(k22, 5),
+                        Math.Round(k31, 5), Math.Round(k32, 5),
+                        Math.Round(k41, 5), Math.Round(k42, 5));
 
-                    u += (h / 6.0) * (ku1 + 2 * ku2 + 2 * ku3 + ku4);
-                    v += (h / 6.0) * (kv1 + 2 * kv2 + 2 * kv3 + kv4);
+                   
+                    u += (k11 + 2 * k21 + 2 * k31 + k41) / 6.0;
+                    v += (k12 + 2 * k22 + 2 * k32 + k42) / 6.0;
                     t += h;
                 }
-                dgvSistemas.DataSource = lista;
-                // Ajustamos el ancho de las columnas para que se vean bien los k
-                dgvSistemas.Columns["Pasos_K_U"].Width = 200;
-                dgvSistemas.Columns["Pasos_K_V"].Width = 200;
+                MessageBox.Show($"Sistema resuelto.\nFinal en t={tMax}: u={u:F6}, v={v:F6}", "Éxito");
             }
-            catch { MessageBox.Show("Verifica que todos los campos tengan números válidos."); }
+            catch { MessageBox.Show("Revisa que los datos sean números válidos."); }
         }
     }
 }

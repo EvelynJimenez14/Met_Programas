@@ -139,7 +139,7 @@ namespace ProyectoMetodos
                     escalas[mejorFila] = tempEsc;
                 }
 
-                // D) Eliminación Gaussiana normal
+               
                 for (int r = i + 1; r < n; r++)
                 {
                     float factor = matriz[r, i] / matriz[i, i];
@@ -156,12 +156,12 @@ namespace ProyectoMetodos
         public bool GaussPivoteoTotal(float[,] matriz, int n, out float[] soluciones)
         {
             soluciones = new float[n];
-            int[] etiquetas = new int[n]; // Para rastrear el orden de las variables (columnas)
+            int[] etiquetas = new int[n]; 
             for (int i = 0; i < n; i++) etiquetas[i] = i;
 
-            for (int i = 0; i < n - 1; i++) // Iterar sobre las etapas
+            for (int i = 0; i < n - 1; i++) 
             {
-                // 1. Buscar el máximo absoluto en la submatriz
+               
                 float maxVal = 0;
                 int maxRow = i, maxCol = i;
 
@@ -178,12 +178,10 @@ namespace ProyectoMetodos
                     }
                 }
 
-                if (maxVal < 1e-6) return false; // Sistema singular
-
-                // 2. Intercambio de Filas (si es necesario)
+                if (maxVal < 1e-6) return false; 
                 if (maxRow != i)
                 {
-                    for (int j = i; j <= n; j++) // Incluye columna de resultados
+                    for (int j = i; j <= n; j++) 
                     {
                         float temp = matriz[i, j];
                         matriz[i, j] = matriz[maxRow, j];
@@ -191,23 +189,23 @@ namespace ProyectoMetodos
                     }
                 }
 
-                // 3. Intercambio de Columnas (si es necesario)
+               
                 if (maxCol != i)
                 {
-                    // Swap columnas en la matriz
+                   
                     for (int r = 0; r < n; r++)
                     {
                         float temp = matriz[r, i];
                         matriz[r, i] = matriz[r, maxCol];
                         matriz[r, maxCol] = temp;
                     }
-                    // Swap etiquetas para recordar qué variable movimos
+                    
                     int tempTag = etiquetas[i];
                     etiquetas[i] = etiquetas[maxCol];
                     etiquetas[maxCol] = tempTag;
                 }
 
-                // 4. Eliminación estándar
+                
                 for (int r = i + 1; r < n; r++)
                 {
                     float factor = matriz[r, i] / matriz[i, i];
@@ -219,10 +217,10 @@ namespace ProyectoMetodos
                 }
             }
 
-            // 5. Sustitución hacia atrás
+            
             float[] solDesordenada = SustitucionHaciaAtras(matriz, n); // Usa tu método existente
 
-            // 6. Reordenar solución según las etiquetas
+            
             for (int i = 0; i < n; i++)
             {
                 soluciones[etiquetas[i]] = solDesordenada[i];
@@ -258,17 +256,17 @@ namespace ProyectoMetodos
                 // Intercambiar filas en U
                 if (maxRow != i)
                 {
-                    // Swap en U
+                    
                     for (int k = i; k < n; k++)
                     {
                         float temp = U[i, k]; U[i, k] = U[maxRow, k]; U[maxRow, k] = temp;
                     }
-                    // Swap en L (solo la parte izquierda ya calculada)
+                    
                     for (int k = 0; k < i; k++)
                     {
                         float temp = L[i, k]; L[i, k] = L[maxRow, k]; L[maxRow, k] = temp;
                     }
-                    // Swap en P
+                   
                     int tempP = P[i]; P[i] = P[maxRow]; P[maxRow] = tempP;
                 }
 
@@ -276,7 +274,7 @@ namespace ProyectoMetodos
                 for (int r = i + 1; r < n; r++)
                 {
                     float factor = U[r, i] / U[i, i];
-                    L[r, i] = factor; // Guardar multiplicador en L
+                    L[r, i] = factor; 
                     U[r, i] = 0;
                     for (int c = i + 1; c < n; c++)
                     {

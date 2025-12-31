@@ -75,7 +75,7 @@ namespace ProyectoMetodos
                         double y_p = y[i] + (h / 24.0) * (55 * f0 - 59 * f1 + 37 * f2 - 9 * f3);
                         y[i + 1] = y[i] + (h / 24.0) * (9 * f(x[i + 1], y_p) + 19 * f0 - 5 * f1 + f2);
                     }
-                    dgvResultados.Rows.Add(i + 1, Math.Round(x[i + 1], 4), Math.Round(y[i + 1], 8), "-", "-", "-", "-");
+                    dgvResultados.Rows.Add(i + 1, Math.Round(x[i + 1], 4), Math.Round(y[i + 1], 8), "", "", "", "");
                 }
             }
             catch { MessageBox.Show("Error en los datos."); }

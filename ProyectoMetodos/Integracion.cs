@@ -107,13 +107,42 @@ namespace ProyectoMetodos
             return (h_x * h_y / 9.0) * sum;
         }
 
-        public double MetodoCuadraturaGaussiana(double x0, double xn)
+        public double MetodoCuadraturaGaussiana(double x0, double xn, int n)
         {
-            double c1 = (xn - x0) / 2.0;
-            double c2 = (xn + x0) / 2.0;
-            double x1 = -1.0 / Math.Sqrt(3.0);
-            double x2 = 1.0 / Math.Sqrt(3.0);
-            return c1 * (funcion(c1 * x1 + c2) + funcion(c1 * x2 + c2));
+           
+            double c1 = (xn - x0) / 2;
+            double c2 = (xn + x0) / 2; 
+            double suma = 0;
+
+            double[] raíces;
+            double[] pesos;
+
+            
+            switch (n)
+            {
+                case 2:
+                    raíces = new double[] { -0.5773502692, 0.5773502692 };
+                    pesos = new double[] { 1.0, 1.0 };
+                    break;
+                case 3:
+                    raíces = new double[] { -0.7745966692, 0.0, 0.7745966692 };
+                    pesos = new double[] { 0.5555555556, 0.8888888889, 0.5555555556 };
+                    break;
+                case 4:
+                    raíces = new double[] { -0.8611363116, -0.3399810436, 0.3399810436, 0.8611363116 };
+                    pesos = new double[] { 0.3478548451, 0.6521451549, 0.6521451549, 0.3478548451 };
+                    break;
+                default:
+                    return 0;
+            }
+
+            
+            for (int i = 0; i < n; i++)
+            {
+                suma += pesos[i] * funcion(c1 * raíces[i] + c2);
+            }
+
+            return c1 * suma;
         }
         public double MetodoCuadraturaAdaptativa(double a, double b, double tolerancia, int nivel = 0)
         {

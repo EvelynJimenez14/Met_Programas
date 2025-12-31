@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,56 +11,36 @@ namespace ProyectoMetodos
             InitializeComponent();
         }
 
-        private void btnCalcular_Click(object sender, EventArgs e)
+        private void btnCalcularNeville_Click(object sender, EventArgs e)
         {
             try
             {
-                // Leer datos de entrada (Ej: 1, 2, 3)
-                double[] x = txtX.Text.Split(',').Select(double.Parse).ToArray();
-                double[] y = txtY.Text.Split(',').Select(double.Parse).ToArray();
-                double targetX = double.Parse(txtTarget.Text);
-                int n = x.Length;
+                dgvNeville.Rows.Clear();
+                dgvNeville.Columns.Clear();
 
-                // Matriz para la tabla de Neville (Q)
-                double[,] Q = new double[n, n];
+                double[] x = txtPuntosX.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
+                double[] y = txtPuntosY.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
+                double xInt = double.Parse(txtValorAInterpolar.Text);
 
-                // Inicializar la primera columna con los valores de f(x)
-                for (int i = 0; i < n; i++)
+                if (x.Length != y.Length)
                 {
-                    Q[i, 0] = y[i];
+                    MessageBox.Show("X y Y deben tener la misma cantidad de puntos.");
+                    return;
                 }
 
-                // Algoritmo de Neville: P(x) = [(x-xj)Qi,j-1 - (x-xi)Qi-1,j-1] / (xi-xj)
-                for (int j = 1; j < n; j++)
-                {
-                    for (int i = j; i < n; i++)
-                    {
-                        Q[i, j] = ((targetX - x[i - j]) * Q[i, j - 1] - (targetX - x[i]) * Q[i - 1, j - 1]) / (x[i] - x[i - j]);
-                    }
-                }
+                double resultado = Interpolacion.InterpolarNeville(x, y, xInt);
 
-                // Mostrar la tabla en el DataGridView
-                MostrarTabla(Q, n);
-                lblResultado.Text = $"Resultado P({targetX}) = " + Math.Round(Q[n - 1, n - 1], 6);
+                dgvNeville.Columns.Add("colStep", "Paso");
+                for (int i = 0; i < x.Length; i++)
+                    dgvNeville.Columns.Add("col" + i, $"Q{i}");
+
+                MessageBox.Show($"Resultado de la interpolación: {resultado:F6}");
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error: Verifique que x, y tengan la misma cantidad de datos separados por comas.\n" + ex.Message);
-            }
-        }
-
-        private void MostrarTabla(double[,] Q, int n)
-        {
-            dgvNeville.ColumnCount = n;
-            dgvNeville.RowCount = n;
-            for (int i = 0; i < n; i++)
-            {
-                dgvNeville.Columns[i].HeaderText = $"Grado {i}";
-                for (int j = 0; j <= i; j++)
-                {
-                    dgvNeville.Rows[i].Cells[j].Value = Math.Round(Q[i, j], 6);
-                }
+                MessageBox.Show("Error: Use comas para separar los números.");
             }
         }
     }
 }
+

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,41 +11,51 @@ namespace ProyectoMetodos
             InitializeComponent();
         }
 
-        private void btnCalcular_Click(object sender, EventArgs e)
+        private void btnCalcularLagrange_Click(object sender, EventArgs e)
         {
             try
             {
-                // Procedimiento: Convertimos el texto en arreglos numéricos usando Select
-                double[] x = txtX.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
-                double[] y = txtY.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
-                double valor = double.Parse(txtValor.Text);
+                dgvLagrange.Rows.Clear();
+                dgvLagrange.Columns.Clear();
+
+                double[] x = txtPuntosX.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
+                double[] y = txtPuntosY.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
+                double xInt = double.Parse(txtValorAInterpolar.Text);
 
                 if (x.Length != y.Length)
                 {
-                    MessageBox.Show("Error: Los arreglos X y Y deben tener el mismo tamaño.");
+                    MessageBox.Show("X y Y deben tener la misma cantidad de puntos.");
                     return;
                 }
 
-                // Aplicación del polinomio de Lagrange
-                double resultado = 0;
+                
+                double resultado = Interpolacion.InterpolarLagrange(x, y, xInt);
+
+                dgvLagrange.Columns.Add("colIndex", "i");
+                dgvLagrange.Columns.Add("colLi", "L_i(x)");
+                dgvLagrange.Columns.Add("colTerm", "y_i * L_i(x)");
+
                 for (int i = 0; i < x.Length; i++)
                 {
-                    double termino = y[i];
+                    double Li = 1;
                     for (int j = 0; j < x.Length; j++)
                     {
-                        if (j != i)
-                        {
-                            termino = termino * (valor - x[j]) / (x[i] - x[j]);
-                        }
+                        if (i != j)
+                            Li *= (xInt - x[j]) / (x[i] - x[j]);
                     }
-                    resultado += termino;
+                    double term = y[i] * Li;
+
+                    int rowIdx = dgvLagrange.Rows.Add();
+                    dgvLagrange.Rows[rowIdx].Cells[0].Value = i;
+                    dgvLagrange.Rows[rowIdx].Cells[1].Value = Math.Round(Li, 6);
+                    dgvLagrange.Rows[rowIdx].Cells[2].Value = Math.Round(term, 6);
                 }
 
-                lblResultado.Text = $"Resultado: {resultado:F5}";
+                MessageBox.Show($"Resultado de la interpolación en x={xInt}: {resultado:F6}");
             }
             catch
             {
-                MessageBox.Show("Error en los datos. Asegúrate de usar números separados por comas.");
+                MessageBox.Show("Error: Use comas para separar los números.");
             }
         }
     }

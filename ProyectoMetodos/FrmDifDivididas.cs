@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,73 +11,70 @@ namespace ProyectoMetodos
             InitializeComponent();
         }
 
+
         private void btnCalcularNewton_Click(object sender, EventArgs e)
         {
             try
             {
-                
-                double[] x = txtPuntosX.Text.Split(',').Select(double.Parse).ToArray();
-                double[] y = txtPuntosY.Text.Split(',').Select(double.Parse).ToArray();
-                double xInterpolar = double.Parse(txtValorAInterpolar.Text);
+                dgvTablaDiferencias.Rows.Clear();
+                dgvTablaDiferencias.Columns.Clear();
+
+                double[] x = txtPuntosX.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
+                double[] y = txtPuntosY.Text.Split(',').Select(s => double.Parse(s.Trim())).ToArray();
+                double xInt = double.Parse(txtValorAInterpolar.Text);
                 int n = x.Length;
 
-               
-                double[,] F = new double[n, n];
-
-                
-                for (int i = 0; i < n; i++)
+                if (n != y.Length)
                 {
-                    F[i, 0] = y[i];
+                    MessageBox.Show("X y Y deben tener la misma cantidad de puntos.");
+                    return;
                 }
 
                 
-                for (int j = 1; j < n; j++)
+                double[,] F = Interpolacion.ConstruirTablaNewton(x, y);
+
+                
+                double resultado = rbAdelante.Checked
+                    ? Interpolacion.InterpolarNewtonAdelante(x, F, xInt)
+                    : Interpolacion.InterpolarNewtonAtras(x, F, xInt);
+
+                
+                dgvTablaDiferencias.Columns.Add("colX", "Xi");
+                dgvTablaDiferencias.Columns.Add("colF", "f(Xi)");
+                for (int k = 1; k < n; k++)
+                    dgvTablaDiferencias.Columns.Add("colDD" + k, "DD " + k);
+
+                
+                if (rbAdelante.Checked)
                 {
-                    for (int i = 0; i < n - j; i++)
+                    
+                    for (int i = 0; i < n; i++)
                     {
-                        F[i, j] = (F[i + 1, j - 1] - F[i, j - 1]) / (x[i + j] - x[i]);
+                        int rowIdx = dgvTablaDiferencias.Rows.Add();
+                        dgvTablaDiferencias.Rows[rowIdx].Cells[0].Value = x[i];
+                        for (int j = 0; j < n - i; j++)
+                            dgvTablaDiferencias.Rows[rowIdx].Cells[j + 1].Value = Math.Round(F[i, j], 4);
+                    }
+                }
+                else
+                {
+                    
+                    for (int i = n - 1; i >= 0; i--)
+                    {
+                        int rowIdx = dgvTablaDiferencias.Rows.Add();
+                        dgvTablaDiferencias.Rows[rowIdx].Cells[0].Value = x[i];
+                        for (int j = 0; j <= i; j++)
+                            dgvTablaDiferencias.Rows[rowIdx].Cells[j + 1].Value = Math.Round(F[i - j, j], 4);
                     }
                 }
 
-                
-                double resultado = F[0, 0];
-                double productoX = 1.0;
-                for (int i = 1; i < n; i++)
-                {
-                    productoX *= (xInterpolar - x[i - 1]);
-                    resultado += F[0, i] * productoX;
-                }
-
-                //Tabla en el DataGridView
-                MostrarTablaEnPantalla(F, n);
-
-                MessageBox.Show($"El valor interpolado en x={xInterpolar} es: {resultado}");
+                MessageBox.Show($"Resultado de la interpolación: {resultado:F6}");
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Error: Revisa que los números estén separados por comas. " + ex.Message);
+                MessageBox.Show("Error: Use comas para separar los números.");
             }
         }
 
-        private void MostrarTablaEnPantalla(double[,] F, int n)
-        {
-            dgvTablaDiferencias.Rows.Clear();
-            dgvTablaDiferencias.ColumnCount = n;
-
-            for (int i = 0; i < n; i++)
-            {
-                string[] fila = new string[n];
-                for (int j = 0; j < n - i; j++)
-                {
-                    fila[j] = Math.Round(F[i, j], 4).ToString();
-                }
-                dgvTablaDiferencias.Rows.Add(fila);
-            }
-        }
-
-        private void btnCalcularNewton_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
