@@ -1,2 +1,1 @@
-# Met_Programas
-https://github.com/DanielAntonioSuber/ProyectoMetodos/tree/master/ProyectoMetodos 
+Usar visual studio para c# y el tercero en python
